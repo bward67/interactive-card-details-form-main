@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Frontend Mentor | Interactive card details form</title>
+  </head>
+  <body>
+    <div class="main-card">
+      <div class="hero-mobile">
+        <img
+          class="background-img-mobile"
+          src="images/bg-main-mobile.png"
+          alt=""
+        />
+        <img
+          class="background-img-desktop"
+          src="images/bg-main-desktop.png"
+          alt=""
+        />
+        <img class="card-back" src="images/bg-card-back.png" alt="" />
+        <div class="card-back card-back-cvc">000</div>
+
+        <img class="card-front" src="images/bg-card-front.png" alt="" />
+
+        <div class="card-front-content">
+          <img src="images/card-logo.svg" alt="" class="logo" />
+          <div class="card-front-number">0000 0000 0000 0000</div>
+
+          <div class="card-front-details">
+            <div class="card-front-name">Jane Appleseed</div>
+            <div class="card-front-date">
+              <div class="card-front-month">00</div>
+              <div>/</div>
+              <div class="card-front-year">00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end of hero-mobile-->
+
+      <form class="form" action="">
+        <div class="form-control">
+          <label for="" class="name">Cardholder Name</label>
+          <input
+            type="text"
+            class="name"
+            id="cardholder-name"
+            placeholder="e.g. Jane Appleseed"
+          />
+          <small>Wrong format, numbers only</small>
+        </div>
+        <div class="form-control">
+          <label for="" class="card-number">Card Number</label>
+          <input
+            type="number"
+            class="card-number"
+            id="card-number"
+            placeholder="e.g. 1234 5678 9123 0000"
+          />
+          <small>Wrong format, numbers only</small>
+        </div>
+
+        <div class="card-security">
+          <div class="form-control">
+            <label for="" class="exp-date-yr">Exp. date (MM/YY) </label>
+            <div class="exp-content">
+              <div class="exp-date">
+                <input type="number" id="exp-date" placeholder="MM" />
+                <small>Wrong format, numbers only</small>
+              </div>
+              <div class="exp-yr">
+                <input type="number" id="exp-yr" placeholder="YY" />
+                <small>Wrong format, numbers only</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-control">
+            <div class="form-control">
+              <label for="" class="cvc">cvc</label>
+              <input
+                type="number"
+                class="cvc"
+                id="cvc"
+                placeholder="e.g. 123"
+              />
+              <small>Wrong format, numbers only</small>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Confirm</button>
+      </form>
+    </div>
+    <!-- Completed state start -->
+    <div class="complete-state hidden">
+      <img src="images/icon-complete.svg" alt="" />
+      <h1>Thank you!</h1>
+      <p>We've added your card details</p>
+      <button class="btn continue">Continue</button>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>

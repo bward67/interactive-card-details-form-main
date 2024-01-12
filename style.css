@@ -1,0 +1,236 @@
+:root {
+  --clr-linear-gradient-active-input-border: hsl(249, 99%, 64%) to
+    hsl(278, 94%, 30%);
+  --clr-red-input-errors: hsl(0, 100%, 66%);
+
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-light-grayish-violet: hsl(270, 3%, 87%);
+  --clr-dark-grayish-violet: hsl(279, 6%, 55%);
+  --clr-very-dark-violet: hsl(278, 68%, 11%);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  font-size: 18px;
+  font-family: "Space Grotesk", sans-serif;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+.main-card {
+  max-width: 375px;
+}
+.background-img-desktop {
+  display: none;
+}
+.hero-mobile {
+  position: relative;
+}
+img {
+  max-width: 100%;
+}
+
+.card-back {
+  position: absolute;
+  left: 68px;
+  top: 30px;
+  width: 290px;
+}
+.card-back-cvc {
+  position: absolute;
+  color: var(--clr-light-grayish-violet);
+  right: 350px;
+  top: 101px;
+  text-align: right;
+  font-size: 0.6em;
+  padding-right: 2.1rem;
+}
+.card-front {
+  position: absolute;
+  width: 290px;
+  left: 15px;
+  top: 120px;
+  margin: 0;
+}
+.card-front-content {
+  color: var(--clr-white);
+  position: absolute;
+  width: 485px !important;
+  left: 10px;
+  top: 120px;
+}
+.card-front-details {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 0 20px;
+  font-size: 9px;
+  width: 260px;
+  letter-spacing: 1px;
+}
+.card-front-date {
+  display: flex;
+}
+.card-front-name {
+  text-transform: uppercase;
+}
+.card-front-number {
+  padding: 0 0 10px 19px;
+  letter-spacing: 2px;
+  font-size: 19.8px;
+}
+.card-security {
+  display: flex;
+  gap: 0.5em;
+}
+.logo {
+  width: 15%;
+  padding: 15px 0 35px 20px;
+}
+.form {
+  padding: 70px 20px 20px 20px;
+}
+label {
+  text-transform: uppercase;
+  font-size: 15px;
+  color: var(--clr-very-dark-violet);
+  margin-bottom: 20px; /*THIS IS NOT WORKING*/
+}
+input {
+  display: block;
+  margin: 0;
+  padding: 1em;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid var(--clr-light-grayish-violet);
+  font-family: inherit;
+}
+input::placeholder {
+  color: var(--clr-light-grayish-violet);
+  margin-bottom: 1em; /*THIS IS NOT WORKING*/
+  font-size: 18px;
+}
+.exp-content {
+  display: flex;
+  gap: 0.5em;
+}
+.btn {
+  background-color: var(--clr-very-dark-violet);
+  padding: 1em;
+  width: 100%;
+  border-radius: 5px;
+  color: var(--clr-white);
+  border: none;
+  cursor: pointer;
+  margin-block: 1.5em;
+}
+
+.complete-state {
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  width: 400px;
+  position: absolute;
+  right: 0;
+  bottom: -120px;
+  /*display: none; we will do this with .hidden instead*/
+}
+
+.complete-state h1 {
+  text-transform: uppercase;
+  margin-top: 20px;
+  letter-spacing: 3px;
+}
+
+.complete-state p {
+  color: var(--clr-light-grayish-violet);
+  margin: 0.8em 0 1.2em 0;
+}
+.hidden {
+  display: none;
+}
+
+small {
+  font-size: 11px;
+  visibility: hidden;
+}
+
+.error input {
+  border-color: var(--clr-red-input-errors);
+}
+.error small {
+  visibility: visible;
+  color: var(--clr-red-input-errors);
+}
+.success input {
+  border-color: green;
+}
+
+@media (min-width: 376px) {
+  .main-card {
+    max-width: 1440px;
+    display: flex;
+  }
+  .background-img-mobile {
+    display: none;
+  }
+  .background-img-desktop {
+    display: block;
+  }
+  .card-back {
+    left: 230px;
+    top: 490px;
+    width: 490px;
+  }
+  .card-back-cvc {
+    font-size: 1em;
+    top: 608px;
+    left: 200px;
+  }
+  .card-front {
+    width: 490px;
+    left: 130px;
+    top: 200px;
+    color: var(--clr-white);
+    margin: 0;
+  }
+  .card-front-content {
+    left: 130px;
+  }
+  .form {
+    align-self: center;
+    margin-left: 320px;
+    width: 30%;
+  }
+  .card-front-details {
+    font-size: 17px;
+    letter-spacing: 1px;
+    width: 430px;
+    margin: 0 auto;
+  }
+
+  .card-front-number {
+    padding: 0 0 15px 25px;
+    letter-spacing: 2px;
+    font-size: 35px;
+    margin-top: 45px;
+  }
+  .logo {
+    width: 24%;
+    padding: 20px 0 35px 25px;
+    margin-top: 80px;
+  }
+  .complete-state {
+    right: 240px;
+    bottom: 60px;
+  }
+  .complete-state .btn {
+    /*Why is this not working??*/
+    width: 80% !important;
+    border: red solid;
+  }
+}
