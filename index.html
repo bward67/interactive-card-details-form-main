@@ -22,37 +22,23 @@
   </head>
   <body>
     <div class="main-card">
-      <div class="hero-mobile">
-        <img
-          class="background-img-mobile"
-          src="images/bg-main-mobile.png"
-          alt=""
-        />
-        <img
-          class="background-img-desktop"
-          src="images/bg-main-desktop.png"
-          alt=""
-        />
-        <img class="card-back" src="images/bg-card-back.png" alt="" />
-        <div class="card-back card-back-cvc">000</div>
-
-        <img class="card-front" src="images/bg-card-front.png" alt="" />
-
-        <div class="card-front-content">
-          <img src="images/card-logo.svg" alt="" class="logo" />
-          <div class="card-front-number">0000 0000 0000 0000</div>
-
-          <div class="card-front-details">
-            <div class="card-front-name">Jane Appleseed</div>
-            <div class="card-front-date">
-              <div class="card-front-month">00</div>
-              <div>/</div>
-              <div class="card-front-year">00</div>
-            </div>
-          </div>
+      <div class="card-section">
+        <div class="card-back">
+          <img class="card-back__img" src="images/bg-card-back.png" alt="" />
+          <div class="card-back__cvc">000</div>
         </div>
+        <div class="card-front">
+          <img class="card-front__img" src="images/bg-card-front.png" alt="" />
+          <img class="card-front__logo" src="images/card-logo.svg" alt="" />
+          <div class="card-front__number">0000 0000 0000 0000</div>
+          <div class="card-front__name">Jane Appleseed</div>
+          <div class="card-front__month">00</div>
+          <div class="card-front__slash">/</div>
+          <div class="card-front__year">00</div>
+        </div>
+        <!--end of card-front-->
       </div>
-      <!--end of hero-mobile-->
+      <!--end of card-section-->
 
       <form class="form" action="">
         <div class="form-control">
@@ -106,14 +92,16 @@
 
         <button type="submit" class="btn">Confirm</button>
       </form>
+
+      <!-- Completed state start -->
+      <div class="complete-state hidden">
+        <img src="images/icon-complete.svg" alt="" />
+        <h1>Thank you!</h1>
+        <p>We've added your card details</p>
+        <button class="btn continue">Continue</button>
+      </div>
     </div>
-    <!-- Completed state start -->
-    <div class="complete-state hidden">
-      <img src="images/icon-complete.svg" alt="" />
-      <h1>Thank you!</h1>
-      <p>We've added your card details</p>
-      <button class="btn continue">Continue</button>
-    </div>
+    <!--end of main-card-->
   </body>
   <script src="app.js"></script>
 </html>
