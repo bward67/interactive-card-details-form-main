@@ -19,86 +19,133 @@
 body {
   font-size: 18px;
   font-family: "Space Grotesk", sans-serif;
-  min-height: 100vh;
   margin: 0 auto;
 }
-.main-card {
-  max-width: 375px;
+
+.card-front,
+.card-back,
+.card-front__img,
+.card-back__img {
+  width: 290px;
 }
-.background-img-desktop {
-  display: none;
-}
-.hero-mobile {
+.card-section {
+  width: 100%;
+  min-height: 40vh;
+  background-image: url(images/bg-main-mobile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  /*max-inline-size: 1200px;*/
   position: relative;
-}
-img {
-  max-width: 100%;
+  /*padding-inline: 2rem;
+  margin-inline: auto;*/
 }
 
-.card-back {
-  position: absolute;
-  left: 68px;
-  top: 30px;
-  width: 290px;
+/*POSITIONING*/
+img {
+  max-width: 100%;
+  display: block; /*to remove the space at the bottom of img*/
 }
-.card-back-cvc {
-  position: absolute;
-  color: var(--clr-light-grayish-violet);
-  right: 350px;
-  top: 101px;
-  text-align: right;
-  font-size: 0.6em;
-  padding-right: 2.1rem;
-}
+
+.card-back,
 .card-front {
-  position: absolute;
-  width: 290px;
-  left: 15px;
-  top: 120px;
-  margin: 0;
+  position: absolute; /*for when they are parents to the 
+  content inside so while we have this we will position 
+  the inside content and then we will set it back to absolute!!*/
 }
-.card-front-content {
+.card-front > *:not(.card-front__img),
+.card-back > *:not(.card-back__img) {
+  /*so this makes all the children inside the card-front and back - EXCEPT for
+  the img - position: absolute*/
+  position: absolute;
+}
+
+.card-front__img,
+.card-back__img {
+  max-width: revert; /*This is like a reset because of the problems
+  we get with setting min-width on all our images in this case*/
+}
+/*BIG PROBLEM HERE IS THAT PADDING DOESN'T WORK WITH POSITION'S
+SO WE MUST CREATE IT IN A DIFFERENT WAY
+so instead we will go to the logo and set top: 2rem
+BUT we will use it often so we will set up a variable
+inside of the card-front - so it will work for JUST the children
+of the card-front*/
+
+.card-front {
   color: var(--clr-white);
-  position: absolute;
-  width: 485px !important;
-  left: 10px;
-  top: 120px;
+  font-size: 0.8rem;
+  --card-padding: 1.2rem; /*this is only available to the 
+  children of the card-front*/
+  z-index: 2; /*Now the card-front is on top of the card-back*/
+  top: 53.6% !important; /*WE MUST set its parent which is: card-section as 
+  position: relative in order for this to work */
+  left: 0.9rem !important;
+  font-size: 0.75rem;
+  width: min-content;
 }
-.card-front-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0 0 20px;
-  font-size: 9px;
-  width: 260px;
-  letter-spacing: 1px;
+
+.card-front__logo {
+  top: var(--card-padding);
+  left: var(--card-padding);
+  width: 20%;
 }
-.card-front-date {
-  display: flex;
+.card-front__number {
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  top: 55%;
+  left: var(--card-padding);
 }
-.card-front-name {
+.card-front__name {
+  bottom: var(--card-padding);
+  left: var(--card-padding);
   text-transform: uppercase;
 }
-.card-front-number {
-  padding: 0 0 10px 19px;
-  letter-spacing: 2px;
-  font-size: 19.8px;
+.card-front__month {
+  bottom: var(--card-padding);
+  right: 2.7rem;
 }
-.card-security {
-  display: flex;
-  gap: 0.5em;
+.card-front__slash {
+  bottom: var(--card-padding);
+  right: 2.3rem;
 }
-.logo {
-  width: 15%;
-  padding: 15px 0 35px 20px;
+.card-front__year {
+  bottom: var(--card-padding);
+  right: var(--card-padding);
 }
+.card-back {
+  top: 2rem !important;
+  right: 1rem !important;
+  width: min-content;
+}
+.card-back__cvc {
+  color: var(--clr-light-grayish-violet);
+  font-size: 0.6em;
+  right: 2rem;
+  top: 46%;
+}
+.card-front,
+.card-back {
+  position: absolute; /*so we are switching it back from
+  absolute to relative AGAIN!! and now they stack up on
+  top of each other because it works like the default which
+  is static*/
+  inset: auto; /*inset is top, bottom, left and right all 
+  wrapped up in one so if we use auto or revert brings it back 
+  to the original and in this case it removes the top: 42%
+  which we had set up on the card-front above but it will 
+  remove all the position properties you may have on*/
+}
+
 .form {
-  padding: 70px 20px 20px 20px;
+  padding: 100px 20px 70px 20px;
 }
 label {
   text-transform: uppercase;
   font-size: 15px;
   color: var(--clr-very-dark-violet);
-  margin-bottom: 20px; /*THIS IS NOT WORKING*/
+  margin-bottom: 0.3rem !important; /*This is NOT
+  working*/
 }
 input {
   display: block;
@@ -111,13 +158,19 @@ input {
 }
 input::placeholder {
   color: var(--clr-light-grayish-violet);
-  margin-bottom: 1em; /*THIS IS NOT WORKING*/
   font-size: 18px;
 }
 .exp-content {
   display: flex;
   gap: 0.5em;
 }
+.card-security {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0 !important; /*This is NOT
+  working*/
+}
+
 .btn {
   background-color: var(--clr-very-dark-violet);
   padding: 1em;
@@ -126,18 +179,15 @@ input::placeholder {
   color: var(--clr-white);
   border: none;
   cursor: pointer;
-  margin-block: 1.5em;
 }
 
 .complete-state {
   text-align: center;
-  width: 90%;
-  margin: 0 auto;
-  width: 400px;
-  position: absolute;
-  right: 0;
-  bottom: -120px;
+  margin-top: 6rem;
   /*display: none; we will do this with .hidden instead*/
+}
+.complete-state img {
+  margin: auto;
 }
 
 .complete-state h1 {
@@ -149,6 +199,10 @@ input::placeholder {
 .complete-state p {
   color: var(--clr-light-grayish-violet);
   margin: 0.8em 0 1.2em 0;
+}
+.complete-state button {
+  width: 80%;
+  font-family: inherit;
 }
 .hidden {
   display: none;
@@ -170,67 +224,56 @@ small {
   border-color: green;
 }
 
-@media (min-width: 376px) {
+@media (min-width: 768px) {
   .main-card {
-    max-width: 1440px;
     display: flex;
+    align-items: center;
+    max-width: 1440px;
   }
-  .background-img-mobile {
-    display: none;
+
+  .card-section {
+    width: 25%;
+    /*margin-right: auto;*/
+    min-height: 100vh;
+    background-image: url(images/bg-main-desktop.png);
   }
-  .background-img-desktop {
-    display: block;
-  }
-  .card-back {
-    left: 230px;
-    top: 490px;
-    width: 490px;
-  }
-  .card-back-cvc {
-    font-size: 1em;
-    top: 608px;
-    left: 200px;
+
+  .card-front,
+  .card-back,
+  .card-front__img,
+  .card-back__img {
+    width: 390px;
   }
   .card-front {
-    width: 490px;
-    left: 130px;
-    top: 200px;
-    color: var(--clr-white);
-    margin: 0;
+    top: 20% !important;
+    left: 25% !important;
+    font-size: 0.9rem;
   }
-  .card-front-content {
-    left: 130px;
+  .card-back {
+    top: 52% !important;
+    left: 45% !important;
+  }
+
+  .card-front__number {
+    font-size: 1.7rem;
+  }
+  .card-back__cvc {
+    font-size: 0.9em;
+    top: 45%;
+    left: 80%;
   }
   .form {
     align-self: center;
     margin-left: 320px;
     width: 30%;
   }
-  .card-front-details {
-    font-size: 17px;
-    letter-spacing: 1px;
-    width: 430px;
-    margin: 0 auto;
-  }
 
-  .card-front-number {
-    padding: 0 0 15px 25px;
-    letter-spacing: 2px;
-    font-size: 35px;
-    margin-top: 45px;
-  }
-  .logo {
-    width: 24%;
-    padding: 20px 0 35px 25px;
-    margin-top: 80px;
-  }
   .complete-state {
-    right: 240px;
-    bottom: 60px;
+    margin: auto;
+
+    width: 400px;
   }
-  .complete-state .btn {
-    /*Why is this not working??*/
-    width: 80% !important;
-    border: red solid;
+  .complete-state button {
+    width: 100%;
   }
 }
