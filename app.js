@@ -6,11 +6,11 @@ const expYr = document.getElementById("exp-yr");
 const cvc = document.getElementById("cvc");
 const continueBtn = document.querySelector(".continue");
 const completeState = document.querySelector(".complete-state");
-const cardBackCvc = document.querySelector(".card-back-cvc");
-const cardFrontNumber = document.querySelector(".card-front-number");
-const cardFrontName = document.querySelector(".card-front-name");
-const cardFrontMonth = document.querySelector(".card-front-month");
-const cardFrontYear = document.querySelector(".card-front-year");
+const cardBackCvc = document.querySelector(".card-back__cvc");
+const cardFrontNumber = document.querySelector(".card-front__number");
+const cardFrontName = document.querySelector(".card-front__name");
+const cardFrontMonth = document.querySelector(".card-front__month");
+const cardFrontYear = document.querySelector(".card-front__year");
 
 function setCardName(e) {
   cardFrontName.innerHTML = e.target.value; /*I dont need to use 
